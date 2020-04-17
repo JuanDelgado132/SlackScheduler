@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const firebase = require('./firebase');
-const config = require('./config');
 const fetch = require('node-fetch');
 const Bluebird = require('bluebird');
+const firebase = require('../db/firebaseDB');
+const config = require('../config/config');
 fetch.Promise = Bluebird;
 
 const blocks = require('./slack-blocks');
