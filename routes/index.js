@@ -63,8 +63,10 @@ const parseSlashCommand = (req) => {
 const createResBody = (data) => {
   let blocks;
   let view;
+  console.log('data', data);
   if (data.command === 'default') {
     blocks = blocks.defaultBlocks;
+    console.log('blocks', blocks);
   } else if (data.command === 'me') {
     blocks = blocks.meBlocks;
   } else if (data.command === 'monday') {
