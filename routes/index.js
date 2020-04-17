@@ -10,7 +10,6 @@ const blocks = require('./slack-blocks');
 router.post('/', async (req, res) => {
   await slackValidation(res, req.body.challenge, req.body.text);
   const data = parseSlashCommand(req);
-  console.log('data', data);
   const resUrl = data.response_url;
   const resBody = data.resBody;
   await slackPost(resUrl, resBody);
@@ -34,7 +33,6 @@ const parseSlashCommand = (req) => {
     user_id,
     user_name,
   };
-  console.log('data in parseSlashCommand', data);
 
   if (user_id !== 'UHRH28QRG') {
     data['command'] = 'error_permissions';
@@ -43,10 +41,7 @@ const parseSlashCommand = (req) => {
 
   if (!text) {
     data['command'] = 'default';
-    return data;
-  }
-
-  if (text.includes('me')) {
+  } else if (text.includes('me')) {
     data['command'] = 'me';
   } else if (text.includes('4/27/20')) {
     data['command'] = 'monday';
