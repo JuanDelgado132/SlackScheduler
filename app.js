@@ -41,7 +41,6 @@ app.use('/users', usersRouter);
 app.listen(port, () => {
   console.log(`app started at ${port}`);
   wakeDyno.wakeDyno(appURL);
-  console.log('past wakeDyno');
 });
 
 module.exports = app;
