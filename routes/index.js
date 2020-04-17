@@ -96,7 +96,7 @@ const slackPost = async (resUrl, resBody, test = false) => {
     body: JSON.stringify(resBody),
   };
   try {
-    console.log('resUrl', resUrl);
+    console.log('resBody', JSON.stringify(resBody));
     await fetch(resUrl, options);
   } catch (error) {
     console.error(error);
