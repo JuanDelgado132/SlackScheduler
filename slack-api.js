@@ -8,7 +8,10 @@ fetch.Promise = Bluebird;
 
 const blocks = require('./slack-blocks');
 
+console.log('will this work?');
+
 router.post('/', async (req, res) => {
+  console.log('inside post');
   await slackValidation(res, req.body.challenge, req.body.text);
   const data = parseSlashCommand(req);
   const resUrl = data.response_url;
