@@ -580,7 +580,47 @@ const infoView = {
   ]
 };
 
-const ptoBlocks = [];
+const ptoBlocks = [
+  {
+    "type": "section",
+    "text": {
+      "type": "mrkdwn",
+      "text": "You have a new request:\n*<google.com|Juan Delgado - Time Off Request>*"
+    }
+  },
+  {
+    "type": "section",
+    "text": {
+      "type": "mrkdwn",
+      "text": "*Type:*\nPaid Time Off\n*When:*\nApril 27 - April 29\n*Hours:* 24.0 (3 days)\n*Remaining balance:* 80.0 hours (10 days)\n*Comments:* \"Family in town, going camping!\""
+    }
+  },
+  {
+    "type": "actions",
+    "elements": [
+      {
+        "type": "button",
+        "text": {
+          "type": "plain_text",
+          "emoji": true,
+          "text": "Approve"
+        },
+        "style": "primary",
+        "value": "click_me_123"
+      },
+      {
+        "type": "button",
+        "text": {
+          "type": "plain_text",
+          "emoji": true,
+          "text": "Deny"
+        },
+        "style": "danger",
+        "value": "click_me_123"
+      }
+    ]
+  }
+];
 
 module.exports = {
   defaultBlocks,

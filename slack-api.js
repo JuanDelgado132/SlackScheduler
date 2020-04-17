@@ -16,8 +16,8 @@ router.post('/', async (req, res) => {
   await slackPost(resUrl, resBody);
 });
 
-const slackValidation = async (res, challenge, text, test = false) => {
-  const responseText = test ? `/staging-test ${text}` : `/staging ${text}`;
+const slackValidation = async (res, challenge, text) => {
+  const responseText = `/schedule ${text}`;
   res.send({
     challenge,
     text: responseText,
