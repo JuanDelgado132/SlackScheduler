@@ -5,7 +5,7 @@ const firebase = require('../db/firebaseDB');
 const config = require('../config/config');
 fetch.Promise = Bluebird;
 
-const blocks = require('./slack-blocks');
+const helperBlocks = require('./slack-blocks');
 
 router.post('/', async (req, res) => {
   await slackValidation(res, req.body.challenge, req.body.text);
@@ -59,20 +59,19 @@ const parseSlashCommand = (req) => {
 const createResBody = (data) => {
   let blocks;
   let view;
-  console.log('data', data);
   if (data.command === 'default') {
-    blocks = blocks.defaultBlocks;
+    blocks = helperBlocks.defaultBlocks;
     console.log('blocks', blocks);
   } else if (data.command === 'me') {
-    blocks = blocks.meBlocks;
+    blocks = helperBlocks.meBlocks;
   } else if (data.command === 'monday') {
-    view = blocks.mondayView;
+    view = helperBlocks.mondayView;
   } else if (data.command === 'ornithology') {
-    view = blocks.ornithologyView;
+    view = helperBlocks.ornithologyView;
   } else if (data.command === 'info') {
-    view = blocks.infoView;
+    view = helperBlocks.infoView;
   } else if (data.command === 'pto') {
-    blocks = blocks.ptoBlocks;
+    blocks = helperBlocks.ptoBlocks;
   }
   const resBody = {
     channel: data.channel_id,
