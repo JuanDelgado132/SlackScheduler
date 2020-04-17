@@ -8,8 +8,10 @@ const wakeDyno = require('./wake-dyno');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
-const app = express();
+const port = process.env.PORT || 8000;
+const appURL = 'https://ioffice-scheduler.herokuapp.com';
 
+const app = express();
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -39,7 +41,6 @@ app.use(function(err, req, res, next) {
 app.listen(port, () => {
   console.log(`app started at ${port}`);
   wakeDyno.wakeDyno(appURL);
-  wakeDyno.wakeDyno(testURL);
 });
 
 module.exports = app;
