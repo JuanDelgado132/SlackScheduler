@@ -24,7 +24,7 @@ const slackValidation = async (res, challenge, text) => {
 };
 
 const parseSlashCommand = (req) => {
-  const { channel_id, response_url, text, token, user_id, user_name } = req.body;
+  const {channel_id, response_url, text, token, user_id, user_name} = req.body;
   const data = {
     channel_id,
     response_url,
@@ -73,13 +73,20 @@ const createResBody = (data) => {
   } else if (data.command === 'pto') {
     blocks = helperBlocks.ptoBlocks;
   }
-  const resBody = {
-    channel: data.channel_id,
-    response_type: 'ephemeral',
-    user: data.command !== 'pto' ? data.user_id : 'UHRH28QRG',
-  };
-  blocks ? resBody['blocks'] = blocks : resBody['view'] = view;
-  return resBody;
+
+  if (blocks) {
+    return {
+      channel: data.channel_id,
+      response_type: 'ephemeral',
+      user: data.command !== 'pto' ? data.user_id : 'UHRH28QRG',
+      blocks,
+    };
+  } else if (view) {
+    return {
+      trigger_id: 'test',
+      view,
+    };
+  }
 };
 
 const slackPost = async (resUrl, resBody, test = false) => {
